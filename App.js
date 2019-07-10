@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
-import { createStackNavigator, createAppContainer } from 'react-navigation';
-import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
-import ReduxThunk from 'redux-thunk';
+import React, { Component } from "react";
+import { createStackNavigator, createAppContainer } from "react-navigation";
+import { Provider } from "react-redux";
+import { createStore, applyMiddleware } from "redux";
+import ReduxThunk from "redux-thunk";
 
-import Reducers from './src/Reducers';
-import Preload from './src/screens/Preload';
-import Login from './src/screens/Login';
+import Reducers from "./src/Reducers";
+import Preload from "./src/screens/Preload";
+import Login from "./src/screens/Login";
 
 console.disableYellowBox = true;
 
