@@ -66,6 +66,24 @@ export class Login extends Component {
             )}
           </View>
 
+          <View style={styles.bArea}>
+            <TouchableHighlight
+              underlayColor={null}
+              style={styles.bText}
+              onPress={() => {}}
+            >
+              <Text style={styles.bTextInt}>Esqueceu a senha?</Text>
+            </TouchableHighlight>
+
+            <TouchableHighlight
+              underlayColor={null}
+              style={styles.bText}
+              onPress={() => {}}
+            >
+              <Text style={styles.bTextInt}>Cadastre-se</Text>
+            </TouchableHighlight>
+          </View>
+
           <TouchableHighlight
             underlayColor={null}
             style={[styles.button, { opacity: buttonOpacity }]}
@@ -138,6 +156,19 @@ const styles = StyleSheet.create({
   buttonImage: {
     width: 30,
     height: 30
+  },
+  bArea: {
+    flexDirection: "row"
+  },
+  bText: {
+    flex: 1,
+    height: 36,
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  bTextInt: {
+    color: "#fff",
+    fontSize: 15
   }
 });
 

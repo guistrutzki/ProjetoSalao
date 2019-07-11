@@ -1,11 +1,24 @@
-// import { } from '../FirebaseDB';
+import { verifyLogin } from "../FirebaseDB";
 
 export const checkLogin = () => {
-  return {
-    type: "changeStatus",
-    payload: {
-      status: 2
-    }
+  return dispatch => {
+    verifyLogin()
+      .then(status => {
+        dispatch({
+          type: "changeStatus",
+          payload: {
+            status
+          }
+        });
+      })
+      .catch(() => {
+        dispatch({
+          type: "changeStatus",
+          payload: {
+            status: 2
+          }
+        });
+      });
   };
 };
 
