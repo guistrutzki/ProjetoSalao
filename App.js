@@ -7,6 +7,7 @@ import ReduxThunk from "redux-thunk";
 import Reducers from "./src/Reducers";
 import Preload from "./src/screens/Preload";
 import Login from "./src/screens/Login";
+import SignUp from "./src/screens/SignUp";
 
 console.disableYellowBox = true;
 
@@ -22,6 +23,10 @@ const AppNavigator = createStackNavigator({
     navigationOptions: {
       header: null
     }
+  },
+  SignUp: {
+    screen: SignUp,
+    navigationOptions: {}
   }
 });
 

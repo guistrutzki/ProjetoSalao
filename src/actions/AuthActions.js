@@ -59,3 +59,12 @@ export const doLogin = (email, password) => {
       });
   };
 };
+
+export const setNameField = name => {
+  return {
+    type: "setNameField",
+    payload: {
+      name
+    }
+  };
+};

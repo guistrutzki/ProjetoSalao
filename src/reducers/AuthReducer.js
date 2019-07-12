@@ -4,6 +4,7 @@ const initialState = {
   password: "123",
   emailValid: false,
   passwordValid: false,
+  nameValid: false,
   status: 0
 };
 
@@ -33,6 +34,17 @@ const AuthReducer = (state = initialState, action) => {
       password: action.payload.password,
       passwordValid: isValid
     };
+  }
+
+  if (action.type === "setNameField") {
+    let isValid = false;
+    let re = /[a-z ]{2,}/;
+
+    if (re.test(action.payload.name.toLowerCase())) {
+      isValid = true;
+    }
+
+    return { ...state, name: action.payload.name, nameValid: isValid };
   }
 
   return state;

@@ -7,23 +7,24 @@ import {
   TextInput,
   Image,
   KeyboardAvoidingView,
-  TouchableHighlight
+  TouchableHighlight,
+  ScrollView
 } from "react-native";
 import { connect } from "react-redux";
 import {
   setEmailField,
   setPasswordField,
-  doLogin
+  doLogin,
+  setNameField
 } from "../actions/AuthActions";
 
-export class Login extends Component {
+export class SignUp extends Component {
   constructor(props) {
     super(props);
     this.state = {};
 
     this.loginAction = this.loginAction.bind(this);
     this.verifyStatus = this.verifyStatus.bind(this);
-    this.goToSignUp = this.goToSignUp.bind(this);
   }
 
   componentDidUpdate() {
@@ -42,10 +43,6 @@ export class Login extends Component {
     }
   }
 
-  goToSignUp() {
-    this.props.navigation.navigate("SignUp");
-  }
-
   render() {
     let buttonOpacity = 0.2;
 
@@ -58,77 +55,74 @@ export class Login extends Component {
         source={require("../assets/login.jpg")}
         style={styles.container}
       >
-        <KeyboardAvoidingView
-          behavior="padding"
-          enabled
-          style={styles.keyboardContainer}
-        >
-          <Text style={styles.header}>Login</Text>
-
-          <View style={styles.fieldArea}>
-            <Text style={styles.fieldTitle}>EMAIL</Text>
-            <TextInput
-              style={styles.fieldItem}
-              value={this.props.email}
-              onChangeText={text => this.props.setEmailField(text)}
-            />
-            {this.props.emailValid && (
-              <Image
-                style={styles.checkedImg}
-                source={require("../assets/checked.png")}
-              />
-            )}
-          </View>
-
-          <View style={styles.fieldArea}>
-            <Text style={styles.fieldTitle}>SENHA</Text>
-            <TextInput
-              style={styles.fieldItem}
-              value={this.props.password}
-              secureTextEntry={true}
-              onChangeText={text => this.props.setPasswordField(text)}
-            />
-            {this.props.passwordValid && (
-              <Image
-                style={styles.checkedImg}
-                source={require("../assets/checked.png")}
-              />
-            )}
-          </View>
-
-          <View style={styles.bArea}>
-            <TouchableHighlight
-              underlayColor={null}
-              style={styles.bText}
-              onPress={() => {}}
-            >
-              <Text style={styles.bTextInt}>Esqueceu a senha?</Text>
-            </TouchableHighlight>
-
-            <TouchableHighlight
-              underlayColor={null}
-              style={styles.bText}
-              onPress={() => {
-                this.goToSignUp();
-              }}
-            >
-              <Text style={styles.bTextInt}>Cadastre-se</Text>
-            </TouchableHighlight>
-          </View>
-
-          <TouchableHighlight
-            underlayColor={null}
-            style={[styles.button, { opacity: buttonOpacity }]}
-            onPress={() => {
-              this.loginAction();
-            }}
+        <ScrollView style={styles.scrollViewStyle}>
+          <KeyboardAvoidingView
+            behavior="padding"
+            enabled
+            style={styles.keyboardContainer}
           >
-            <Image
-              source={require("../assets/loginButton.png")}
-              style={styles.buttonImage}
-            />
-          </TouchableHighlight>
-        </KeyboardAvoidingView>
+            <Text style={styles.header}>Cadastre-se</Text>
+
+            <View style={styles.fieldArea}>
+              <Text style={styles.fieldTitle}>NOME {this.props.nameValid}</Text>
+              <TextInput
+                style={styles.fieldItem}
+                value={this.props.name}
+                onChangeText={text => this.props.setNameField(text)}
+              />
+              {this.props.nameValid && (
+                <Image
+                  style={styles.checkedImg}
+                  source={require("../assets/checked.png")}
+                />
+              )}
+            </View>
+
+            <View style={styles.fieldArea}>
+              <Text style={styles.fieldTitle}>EMAIL</Text>
+              <TextInput
+                style={styles.fieldItem}
+                value={this.props.email}
+                onChangeText={text => this.props.setEmailField(text)}
+              />
+              {this.props.emailValid && (
+                <Image
+                  style={styles.checkedImg}
+                  source={require("../assets/checked.png")}
+                />
+              )}
+            </View>
+
+            <View style={styles.fieldArea}>
+              <Text style={styles.fieldTitle}>SENHA</Text>
+              <TextInput
+                style={styles.fieldItem}
+                value={this.props.password}
+                secureTextEntry={true}
+                onChangeText={text => this.props.setPasswordField(text)}
+              />
+              {this.props.passwordValid && (
+                <Image
+                  style={styles.checkedImg}
+                  source={require("../assets/checked.png")}
+                />
+              )}
+            </View>
+          </KeyboardAvoidingView>
+        </ScrollView>
+
+        <TouchableHighlight
+          underlayColor={null}
+          style={[styles.button, { opacity: buttonOpacity }]}
+          onPress={() => {
+            this.loginAction();
+          }}
+        >
+          <Image
+            source={require("../assets/loginButton.png")}
+            style={styles.buttonImage}
+          />
+        </TouchableHighlight>
       </ImageBackground>
     );
   }
@@ -140,6 +134,9 @@ const styles = StyleSheet.create({
     padding: 20
   },
   keyboardContainer: {
+    flex: 1
+  },
+  scrollViewStyle: {
     flex: 1
   },
   header: {
@@ -208,13 +205,15 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = state => ({
   status: state.auth.status,
+  name: state.auth.name,
   email: state.auth.email,
   password: state.auth.password,
   emailValid: state.auth.emailValid,
+  nameValid: state.auth.nameValid,
   passwordValid: state.auth.passwordValid
 });
 
 export default connect(
   mapStateToProps,
-  { setEmailField, setPasswordField, doLogin }
-)(Login);
+  { setEmailField, setPasswordField, doLogin, setNameField }
+)(SignUp);
