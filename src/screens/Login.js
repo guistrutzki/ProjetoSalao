@@ -10,13 +10,37 @@ import {
   TouchableHighlight
 } from "react-native";
 import { connect } from "react-redux";
-import { setEmailField, setPasswordField } from "../actions/AuthActions";
+import {
+  setEmailField,
+  setPasswordField,
+  doLogin
+} from "../actions/AuthActions";
 
 export class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {};
+
+    this.loginAction = this.loginAction.bind(this);
+    this.verifyStatus = this.verifyStatus.bind(this);
   }
+
+  componentDidUpdate() {
+    this.verifyStatus();
+  }
+
+  loginAction() {
+    if (this.props.emailValid === true && this.props.passwordValid === true) {
+      this.props.doLogin(this.props.email, this.props.password);
+    }
+  }
+
+  verifyStatus() {
+    if (this.props.status === 1) {
+      alert("Manda pra home");
+    }
+  }
+
   render() {
     let buttonOpacity = 0.2;
 
@@ -56,6 +80,7 @@ export class Login extends Component {
             <TextInput
               style={styles.fieldItem}
               value={this.props.password}
+              secureTextEntry={true}
               onChangeText={text => this.props.setPasswordField(text)}
             />
             {this.props.passwordValid && (
@@ -87,7 +112,9 @@ export class Login extends Component {
           <TouchableHighlight
             underlayColor={null}
             style={[styles.button, { opacity: buttonOpacity }]}
-            onPress={() => {}}
+            onPress={() => {
+              this.loginAction();
+            }}
           >
             <Image
               source={require("../assets/loginButton.png")}
@@ -182,5 +209,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { setEmailField, setPasswordField }
+  { setEmailField, setPasswordField, doLogin }
 )(Login);

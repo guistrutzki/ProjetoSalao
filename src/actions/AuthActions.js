@@ -1,4 +1,4 @@
-import { verifyLogin } from "../FirebaseDB";
+import { verifyLogin, makeLogin } from "../FirebaseDB";
 
 export const checkLogin = () => {
   return dispatch => {
@@ -37,5 +37,25 @@ export const setPasswordField = password => {
     payload: {
       password
     }
+  };
+};
+
+export const doLogin = (email, password) => {
+  return dispatch => {
+    makeLogin(email, password)
+      .then(status => {
+        if (status == 2) {
+          alert("E-mail e ou senha errados!");
+        }
+        dispatch({
+          type: "changeStatus",
+          payload: {
+            status
+          }
+        });
+      })
+      .catch(() => {
+        alert("Tente novamente mais tarde.");
+      });
   };
 };

@@ -7,3 +7,12 @@ export const verifyLogin = function() {
     }, 2000);
   });
 };
+
+export const makeLogin = function(email, password) {
+  return new Promise((resolve, reject) => {
+    let status = 1;
+    setTimeout(() => {
+      resolve(status);
+    }, 2000);
+  });
+};
