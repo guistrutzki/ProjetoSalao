@@ -46,6 +46,10 @@ export class Login extends Component {
     this.props.navigation.navigate("SignUp");
   }
 
+  goToForgot() {
+    this.props.navigation.navigate("Forgot");
+  }
+
   render() {
     let buttonOpacity = 0.2;
 
@@ -100,7 +104,9 @@ export class Login extends Component {
             <TouchableHighlight
               underlayColor={null}
               style={styles.bText}
-              onPress={() => {}}
+              onPress={() => {
+                this.goToForgot();
+              }}
             >
               <Text style={styles.bTextInt}>Esqueceu a senha?</Text>
             </TouchableHighlight>

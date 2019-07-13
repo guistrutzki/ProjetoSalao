@@ -11,19 +11,14 @@ import {
   ScrollView
 } from "react-native";
 import { connect } from "react-redux";
-import {
-  setEmailField,
-  setPasswordField,
-  doSignUp,
-  setNameField
-} from "../actions/AuthActions";
+import { setEmailField, doForgot } from "../actions/AuthActions";
 
-export class SignUp extends Component {
+export class Forgot extends Component {
   constructor(props) {
     super(props);
     this.state = {};
 
-    this.signUpAction = this.signUpAction.bind(this);
+    this.forgotAction = this.forgotAction.bind(this);
     this.verifyStatus = this.verifyStatus.bind(this);
   }
 
@@ -31,17 +26,9 @@ export class SignUp extends Component {
     this.verifyStatus();
   }
 
-  signUpAction() {
-    if (
-      this.props.nameValid === true &&
-      this.props.emailValid === true &&
-      this.props.passwordValid === true
-    ) {
-      this.props.doSignUp(
-        this.props.name,
-        this.props.email,
-        this.props.password
-      );
+  forgotAction() {
+    if (this.props.emailValid === true) {
+      this.props.doForgot(this.props.email);
     }
   }
 
@@ -54,11 +41,7 @@ export class SignUp extends Component {
   render() {
     let buttonOpacity = 0.2;
 
-    if (
-      this.props.nameValid === true &&
-      this.props.emailValid === true &&
-      this.props.passwordValid === true
-    ) {
+    if (this.props.emailValid === true) {
       buttonOpacity = 1;
     }
 
@@ -73,22 +56,7 @@ export class SignUp extends Component {
             enabled
             style={styles.keyboardContainer}
           >
-            <Text style={styles.header}>Cadastre-se</Text>
-
-            <View style={styles.fieldArea}>
-              <Text style={styles.fieldTitle}>NOME {this.props.nameValid}</Text>
-              <TextInput
-                style={styles.fieldItem}
-                value={this.props.name}
-                onChangeText={text => this.props.setNameField(text)}
-              />
-              {this.props.nameValid && (
-                <Image
-                  style={styles.checkedImg}
-                  source={require("../assets/checked.png")}
-                />
-              )}
-            </View>
+            <Text style={styles.header}>Esqueceu a senha ?</Text>
 
             <View style={styles.fieldArea}>
               <Text style={styles.fieldTitle}>EMAIL</Text>
@@ -104,22 +72,6 @@ export class SignUp extends Component {
                 />
               )}
             </View>
-
-            <View style={styles.fieldArea}>
-              <Text style={styles.fieldTitle}>SENHA</Text>
-              <TextInput
-                style={styles.fieldItem}
-                value={this.props.password}
-                secureTextEntry={true}
-                onChangeText={text => this.props.setPasswordField(text)}
-              />
-              {this.props.passwordValid && (
-                <Image
-                  style={styles.checkedImg}
-                  source={require("../assets/checked.png")}
-                />
-              )}
-            </View>
           </KeyboardAvoidingView>
         </ScrollView>
 
@@ -127,7 +79,7 @@ export class SignUp extends Component {
           underlayColor={null}
           style={[styles.button, { opacity: buttonOpacity }]}
           onPress={() => {
-            this.signUpAction();
+            this.forgotAction();
           }}
         >
           <Image
@@ -217,15 +169,11 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = state => ({
   status: state.auth.status,
-  name: state.auth.name,
   email: state.auth.email,
-  password: state.auth.password,
-  emailValid: state.auth.emailValid,
-  nameValid: state.auth.nameValid,
-  passwordValid: state.auth.passwordValid
+  emailValid: state.auth.emailValid
 });
 
 export default connect(
   mapStateToProps,
-  { setEmailField, setPasswordField, doSignUp, setNameField }
-)(SignUp);
+  { setEmailField, doForgot }
+)(Forgot);

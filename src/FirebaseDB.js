@@ -16,3 +16,20 @@ export const makeLogin = function(email, password) {
     }, 2000);
   });
 };
+
+export const makeSignUp = function(name, email, password) {
+  return new Promise((resolve, reject) => {
+    let status = 2;
+    setTimeout(() => {
+      resolve(status);
+    }, 2000);
+  });
+};
+
+export const makeForgot = function(email) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve();
+    }, 2000);
+  });
+};

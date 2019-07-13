@@ -1,4 +1,4 @@
-import { verifyLogin, makeLogin } from "../FirebaseDB";
+import { verifyLogin, makeLogin, makeSignUp, makeForgot } from "../FirebaseDB";
 
 export const checkLogin = () => {
   return dispatch => {
@@ -19,6 +19,15 @@ export const checkLogin = () => {
           }
         });
       });
+  };
+};
+
+export const setNameField = name => {
+  return {
+    type: "setNameField",
+    payload: {
+      name
+    }
   };
 };
 
@@ -60,11 +69,34 @@ export const doLogin = (email, password) => {
   };
 };
 
-export const setNameField = name => {
-  return {
-    type: "setNameField",
-    payload: {
-      name
-    }
+export const doSignUp = (name, email, password) => {
+  return dispatch => {
+    makeSignUp(email, password)
+      .then(status => {
+        if (status == 2) {
+          alert("E-mail já está cadastrado!");
+        }
+        dispatch({
+          type: "changeStatus",
+          payload: {
+            status
+          }
+        });
+      })
+      .catch(() => {
+        alert("Tente novamente mais tarde.");
+      });
+  };
+};
+
+export const doForgot = email => {
+  return dispatch => {
+    makeForgot(email)
+      .then(status => {
+        alert("Enviamos um e-mail de redefinição de senha.");
+      })
+      .catch(() => {
+        alert("Tente novamente mais tarde.");
+      });
   };
 };

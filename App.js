@@ -8,6 +8,7 @@ import Reducers from "./src/Reducers";
 import Preload from "./src/screens/Preload";
 import Login from "./src/screens/Login";
 import SignUp from "./src/screens/SignUp";
+import Forgot from "./src/screens/Forgot";
 
 console.disableYellowBox = true;
 
@@ -26,7 +27,21 @@ const AppNavigator = createStackNavigator({
   },
   SignUp: {
     screen: SignUp,
-    navigationOptions: {}
+    navigationOptions: {
+      headerStyle: {
+        backgroundColor: "#0f6675"
+      },
+      headerTintColor: "#fff"
+    }
+  },
+  Forgot: {
+    screen: Forgot,
+    navigationOptions: {
+      headerStyle: {
+        backgroundColor: "#0f6675"
+      },
+      headerTintColor: "#fff"
+    }
   }
 });
 
