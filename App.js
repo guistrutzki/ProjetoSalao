@@ -9,6 +9,7 @@ import Preload from "./src/screens/Preload";
 import Login from "./src/screens/Login";
 import SignUp from "./src/screens/SignUp";
 import Forgot from "./src/screens/Forgot";
+import HomeNav from "./src/screens/HomeNav";
 
 console.disableYellowBox = true;
 
@@ -41,6 +42,12 @@ const AppNavigator = createStackNavigator({
         backgroundColor: "#0f6675"
       },
       headerTintColor: "#fff"
+    }
+  },
+  HomeNav: {
+    screen: HomeNav,
+    navigationOptions: {
+      header: null
     }
   }
 });

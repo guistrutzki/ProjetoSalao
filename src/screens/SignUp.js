@@ -11,6 +11,7 @@ import {
   ScrollView
 } from "react-native";
 import { connect } from "react-redux";
+import { StackActions, NavigationActions } from "react-navigation";
 import {
   setEmailField,
   setPasswordField,
@@ -47,7 +48,12 @@ export class SignUp extends Component {
 
   verifyStatus() {
     if (this.props.status === 1) {
-      alert("Manda pra home");
+      this.props.navigation.dispatch(
+        StackActions.reset({
+          index: 0,
+          actions: [NavigationActions.navigate({ routeName: "HomeNav" })]
+        })
+      );
     }
   }
 
