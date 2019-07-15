@@ -1,4 +1,9 @@
-import { verifyLogin, makeLogin, makeSignUp, makeForgot } from "../FirebaseDB";
+import {
+  verifyLogin,
+  loginWithFirebase,
+  signUpWithFirebase,
+  makeForgot
+} from "../FirebaseDB";
 
 export const checkLogin = () => {
   return dispatch => {
@@ -51,7 +56,7 @@ export const setPasswordField = password => {
 
 export const doLogin = (email, password) => {
   return dispatch => {
-    makeLogin(email, password)
+    loginWithFirebase(email, password)
       .then(status => {
         if (status == 2) {
           alert("E-mail e ou senha errados!");
@@ -71,7 +76,7 @@ export const doLogin = (email, password) => {
 
 export const doSignUp = (name, email, password) => {
   return dispatch => {
-    makeSignUp(email, password)
+    signUpWithFirebase(name, email, password)
       .then(status => {
         if (status == 2) {
           alert("E-mail já está cadastrado!");
@@ -83,8 +88,8 @@ export const doSignUp = (name, email, password) => {
           }
         });
       })
-      .catch(() => {
-        alert("Tente novamente mais tarde.");
+      .catch(error => {
+        alert(error);
       });
   };
 };

@@ -116,7 +116,7 @@ export class SignUp extends Component {
               <TextInput
                 style={styles.fieldItem}
                 value={this.props.password}
-                secureTextEntry={true}
+                // secureTextEntry={true}
                 onChangeText={text => this.props.setPasswordField(text)}
               />
               {this.props.passwordValid && (
@@ -198,7 +198,6 @@ const styles = StyleSheet.create({
     height: 70,
     borderRadius: 35,
     backgroundColor: "#ff0",
-    color: "#fff",
     justifyContent: "center",
     alignItems: "center"
   },
