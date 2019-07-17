@@ -1,0 +1,66 @@
+M* Usuario informar troco
+* Beneficios para o entregador/Desconto em lancherias
+* Taxa de entrega 10¨%
+
+
+
+Passos do cliente 
+
+1-Escolher entre produto/comida ou serviço
+1.1 - Produto/comida
+	- Local da entrega
+	- Local da compra
+	- Descrição do produto(s)
+	
+
+
+
+Passos do entregador
+
+1-Mostra os pedidos
+2-Aceita o pedido
+3-Mostra a direção até o local de compra
+4-Confirma que chegou ao local da compra
+5-Mostra os produtos que precisão ser comprados
+6-Confirma os produtos que foram comprados
+7-Mostra a direção até o endereço do usuário
+8-Confirma que chegou ao local
+9-Confirma que entregou os produtos
+10-Avalia o cliente
+
+KeyboardAvoidingView.
+
+https://www.lume.ufrgs.br/bitstream/handle/10183/150930/001009684.pdf?sequence=1
+
+
+
+Um sistema desta forma facilitaria em agilidade e qualidade de serviço, possibilitando planejamento, histórico e relatórios por parte da empresa, trazendo conforto ao cliente para realização de suas tarefas, refeições ou qualquer serviço que necessite uma ponte para ser executada.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+diablas1.1
+https://twitter.com/snapchatsex9712
+https://twitter.com/nextdoornurs3
+dderanairb

@@ -3,16 +3,16 @@ import firebase from "./FirebaseConfig";
 export const verifyLogin = function() {
   return new Promise((resolve, reject) => {
     let status;
-
-    firebase.auth().onAuthStateChanged(user => {
-      if (user) {
-        status = 1;
-        resolve(status);
-      } else {
-        status = 2;
-        resolve(status);
-      }
-    });
+    resolve(1);
+    // firebase.auth().onAuthStateChanged(user => {
+    //   if (user) {
+    //     status = 1;
+    //     resolve(status);
+    //   } else {
+    //     status = 2;
+    //     resolve(status);
+    //   }
+    // });
   });
 };
 
