@@ -1,33 +1,29 @@
 import React, { Component } from "react";
 import { createStackNavigator } from "react-navigation";
 
+import Calendar from "./Calendar";
 import Home from "./Home";
-import Menu from './Menu';
 
 export default (HomeNav = createStackNavigator({
-  // Home: {
-  //   screen: Home,
-  //   navigationOptions: {
-  //     title: "Projeto salão",
-  //     headerTitleStyle: {
-  //       textAlign: "center",
-  //       flex: 1
-  //     }
-  //   }
-  // },
-  Menu: {
-    screen: Menu,
+  Home: {
+    screen: Home,
     navigationOptions: {
-      header: null,
-      // title: `Studio Priscila Andrade`,
-      // headerTintColor: '#fff',
-      // headerStyle: {
-      //   backgroundColor: '#ff007f',
-      // },
-      // headerTitleStyle: {
-      //   color: "#fff",
-      //   fontSize: 20,
-      // },
+      header: null
+    }
+  },
+  Calendar: {
+    screen: Calendar,
+    navigationOptions: {
+      headerTintColor: "#fff",
+      headerStyle: {
+        backgroundColor: "#5c146f"
+      },
+      title: "Agendar Horário",
+      headerTitleStyle: {
+        color: "#fff",
+        textAlign: "center",
+        flex: 1
+      }
     }
   }
 }));

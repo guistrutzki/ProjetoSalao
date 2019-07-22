@@ -70,3 +70,11 @@ export const makeForgot = function(email) {
     }, 2000);
   });
 };
+
+export const loadUnavailableDays = function() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(true)
+    }, 0)
+  });
+}
