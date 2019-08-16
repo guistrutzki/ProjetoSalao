@@ -75,7 +75,7 @@ export class Calendar extends Component {
 
             <CalendarPicker
               scaleFactor={375}
-              selectedDayStyle={{ color: "#fff", backgroundColor: "#a61bc2" }}
+              selectedDayStyle={{backgroundColor: "#a61bc2" }}
               selectedDayTextColor="#FFFFFF"
               textStyle={{ color: "#fff" }}
               todayBackgroundColor="#000f33"
@@ -106,7 +106,7 @@ export class Calendar extends Component {
               <TouchableOpacity
                 onPress={() => {
                   if (this.state.selectedDate) {
-                    alert("clicou");
+                    this.props.navigation.navigate("SelectHour");
                   }
                 }}
               >
